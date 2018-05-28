@@ -2,6 +2,7 @@ spdlog (0.17.0-1) UNRELEASED; urgency=medium
 
   * Team upload.
   * New upstream version
+  * debhelper 11
 
  -- Andreas Tille <tille@debian.org>  Mon, 28 May 2018 21:20:47 +0200
 
