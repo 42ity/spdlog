@@ -7,6 +7,7 @@ override_dh_auto_install:
 	rm -f example/logs/.gitignore
 	dh_auto_install
 	rm debian/libspdlog-dev/usr/include/spdlog/fmt/bundled/LICENSE.rst
+	find debian -name .gitignore -delete
 
 override_dh_auto_test:
 	cd tests && ${MAKE} tests clean
