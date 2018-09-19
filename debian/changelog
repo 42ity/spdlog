@@ -1,10 +1,12 @@
-spdlog (1.1.0-1) UNRELEASED; urgency=medium
+spdlog (1:1.1.0-1) unstable; urgency=medium
 
   * Team upload.
   * New upstream version
+    Closes: #909197
   * Standards-Version: 4.2.1
+  * Respect DEB_BUILD_OPTIONS in override_dh_auto_test
 
- -- Andreas Tille <tille@debian.org>  Wed, 19 Sep 2018 21:38:20 +0200
+ -- Andreas Tille <tille@debian.org>  Wed, 19 Sep 2018 21:38:22 +0200
 
 spdlog (1:0.17.0-1) unstable; urgency=medium
 

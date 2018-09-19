@@ -10,5 +10,7 @@ override_dh_auto_install:
 	find debian -name .gitignore -delete
 
 override_dh_auto_test:
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
 	cd tests && ${MAKE} tests clean
 	dh_auto_test
+endif
