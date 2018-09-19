@@ -1,3 +1,10 @@
+spdlog (1.1.0-1) UNRELEASED; urgency=medium
+
+  * Team upload.
+  * New upstream version
+
+ -- Andreas Tille <tille@debian.org>  Wed, 19 Sep 2018 21:38:20 +0200
+
 spdlog (1:0.17.0-1) unstable; urgency=medium
 
   * Team upload.
