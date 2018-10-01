@@ -1,5 +1,9 @@
 #!/usr/bin/make -f
 
+ifneq (,$(filter $(DEB_HOST_ARCH), armel m68k mips mipsel powerpc powerpcspe sh4))
+  export DEB_LDFLAGS_MAINT_APPEND=-latomic
+endif
+
 %:
 	dh $@
 
