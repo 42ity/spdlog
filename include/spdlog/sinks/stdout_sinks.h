@@ -12,14 +12,13 @@
 #include <cstdio>
 #include <memory>
 #include <mutex>
-#include <spdlog/details/console_globals.h>
 
 namespace spdlog {
 
 namespace sinks {
 
 template<typename TargetStream, typename ConsoleMutex>
-class stdout_sink SPDLOG_FINAL : public sink
+class stdout_sink final : public sink
 {
 public:
     using mutex_t = typename ConsoleMutex::mutex_t;

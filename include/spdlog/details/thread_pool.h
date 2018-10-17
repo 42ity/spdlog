@@ -64,8 +64,8 @@ struct async_msg
         return *this;
     }
 #else // (_MSC_VER) && _MSC_VER <= 1800
-    async_msg(async_msg &&other) = default;
-    async_msg &operator=(async_msg &&other) = default;
+    async_msg(async_msg &&) = default;
+    async_msg &operator=(async_msg &&) = default;
 #endif
 
     // construct from log_msg with given type
@@ -75,13 +75,13 @@ struct async_msg
         , time(m.time)
         , thread_id(m.thread_id)
         , msg_id(m.msg_id)
-        , worker_ptr(std::forward<async_logger_ptr>(worker))
+        , worker_ptr(std::move(worker))
     {
         fmt_helper::append_buf(m.raw, raw);
     }
 
     async_msg(async_logger_ptr &&worker, async_msg_type the_type)
-        : async_msg(std::forward<async_logger_ptr>(worker), the_type, details::log_msg())
+        : async_msg(std::move(worker), the_type, details::log_msg())
     {
     }
 
@@ -146,9 +146,12 @@ public:
         }
     }
 
+    thread_pool(const thread_pool &) = delete;
+    thread_pool &operator=(thread_pool &&) = delete;
+
     void post_log(async_logger_ptr &&worker_ptr, details::log_msg &&msg, async_overflow_policy overflow_policy)
     {
-        async_msg async_m(std::forward<async_logger_ptr>(worker_ptr), async_msg_type::log, std::forward<log_msg>(msg));
+        async_msg async_m(std::move(worker_ptr), async_msg_type::log, std::move(msg));
         post_async_msg_(std::move(async_m), overflow_policy);
     }
 
@@ -198,6 +201,13 @@ private:
 
         switch (incoming_async_msg.msg_type)
         {
+        case async_msg_type::log:
+        {
+            log_msg msg;
+            incoming_async_msg.to_log_msg(msg);
+            incoming_async_msg.worker_ptr->backend_log_(msg);
+            return true;
+        }
         case async_msg_type::flush:
         {
             incoming_async_msg.worker_ptr->backend_flush_();
@@ -208,16 +218,9 @@ private:
         {
             return false;
         }
-
-        default:
-        {
-            log_msg msg;
-            incoming_async_msg.to_log_msg(msg);
-            incoming_async_msg.worker_ptr->backend_log_(msg);
-            return true;
         }
-        }
-        return true; // should not be reached
+        assert(false && "Unexpected async_msg_type");
+        return true;
     }
 };
 
