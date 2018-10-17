@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
     int howmany = 1000000;
     int queue_size = howmany + 2;
     int threads = 10;
-    int file_size = 30 * 1024 * 1024;
-    int rotating_files = 5;
+    size_t file_size = 30 * 1024 * 1024;
+    size_t rotating_files = 5;
 
     try
     {
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
         cout << "******************************************************************"
                 "*************\n";
 
-        auto basic_st = spdlog::basic_logger_mt("basic_st", "logs/basic_st.log", true);
+        auto basic_st = spdlog::basic_logger_st("basic_st", "logs/basic_st.log", true);
         bench(howmany, basic_st);
 
         auto rotating_st = spdlog::rotating_logger_st("rotating_st", "logs/rotating_st.log", file_size, rotating_files);
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 
         for (int i = 0; i < 3; ++i)
         {
-            spdlog::init_thread_pool(queue_size, 1);
+            spdlog::init_thread_pool(static_cast<size_t>(queue_size), 1);
             auto as = spdlog::basic_logger_mt<spdlog::async_factory>("async", "logs/basic_async.log", true);
             bench_mt(howmany, as, threads);
             spdlog::drop("async");
