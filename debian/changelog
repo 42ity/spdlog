@@ -1,3 +1,9 @@
+spdlog (1:1.2.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Wed, 28 Nov 2018 23:54:25 -0800
+
 spdlog (1:1.2.0-1) unstable; urgency=medium
 
   * New upstream release.
