@@ -12,6 +12,7 @@ Homepage: https://github.com/gabime/spdlog
 
 Package: libspdlog-dev
 Architecture: any
+Multi-Arch: same
 Depends: ${misc:Depends}
 Description: Very fast, header only, C++ logging library
  Features: Very fast - performance is the primary goal; Headers only; No
