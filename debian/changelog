@@ -1,8 +1,9 @@
-spdlog (1:1.2.1-2) UNRELEASED; urgency=medium
+spdlog (1:1.3.0-1) UNRELEASED; urgency=medium
 
   * debian/control: Mark us as Multi-Arch: same.
+  * New upstream version
 
- -- Michael R. Crusoe <michael.crusoe@gmail.com>  Mon, 24 Dec 2018 04:06:16 -0800
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Sat, 12 Jan 2019 05:33:37 -0800
 
 spdlog (1:1.2.1-1) unstable; urgency=medium
 
