@@ -7,14 +7,13 @@ endif
 %:
 	dh $@
 
+override_dh_auto_configure:
+	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLES=ON \
+		-DSPDLOG_BUILD_BENCH=ON \
+		-DSPDLOG_BUILD_TESTS=ON \
+
 override_dh_auto_install:
 	rm -f example/logs/.gitignore
 	dh_auto_install
 	rm debian/libspdlog-dev/usr/include/spdlog/fmt/bundled/LICENSE.rst
 	find debian -name .gitignore -delete
-
-override_dh_auto_test:
-ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
-	cd tests && ${MAKE} tests clean
-	dh_auto_test
-endif
