@@ -5,7 +5,7 @@ Section: libdevel
 Priority: optional
 Build-Depends: debhelper-compat (= 12),
                cmake
-Standards-Version: 4.3.0
+Standards-Version: 4.4.0
 Vcs-Browser: https://salsa.debian.org/med-team/spdlog
 Vcs-Git: https://salsa.debian.org/med-team/spdlog.git
 Homepage: https://github.com/gabime/spdlog
