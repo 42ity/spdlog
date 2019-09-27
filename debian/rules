@@ -4,16 +4,20 @@ ifneq (,$(filter $(DEB_HOST_ARCH), armel m68k mips mipsel powerpc powerpcspe sh4
   export DEB_LDFLAGS_MAINT_APPEND=-latomic
 endif
 
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
+
 %:
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLES=ON \
+	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=ON \
+		-DSPDLOG_BUILD_EXAMPLE_HO=ON \
 		-DSPDLOG_BUILD_BENCH=OFF \
-		-DSPDLOG_BUILD_TESTS=ON
+		-DSPDLOG_BUILD_TESTS=ON \
+		-DSPDLOG_BUILD_SHARED=ON \
+		-DSPDLOG_FMT_EXTERNAL=ON
 
 override_dh_auto_install:
 	rm -f example/logs/.gitignore
 	dh_auto_install
-	rm debian/libspdlog-dev/usr/include/spdlog/fmt/bundled/LICENSE.rst
 	find debian -name .gitignore -delete

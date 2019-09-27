@@ -4,12 +4,17 @@
 #set -e
  
 pkg=libspdlog-dev
-if [ "$ADTTMP" = "" ] ; then
-  ADTTMP=`mktemp -d /tmp/${pkg}-test.XXXXXX`
+if [ "$AUTOPKGTEST_TMP" = "" ] ; then
+  AUTOPKGTEST_TMP=`mktemp -d /tmp/${pkg}-test.XXXXXX`
+  trap "rm -rf $AUTOPKGTEST_TMP" 0 INT QUIT ABRT PIPE TERM
 fi
-cd $ADTTMP
+cd $AUTOPKGTEST_TMP
 
-cp -rs /usr/share/doc/libspdlog-dev/tests/ .
+cp -r /usr/share/doc/libspdlog-dev/tests/ .
+mkdir cmake
+cp /usr/share/doc/libspdlog-dev/utils.cmake cmake/
 cd tests
-gunzip < catch.hpp.gz > catch.hpp
-make
+for file in *.gz; do gunzip ${file}; done
+cmake -DSPDLOG_BUILD_TESTS=ON -DSPDLOG_BUILD_TESTS_HO=ON .
+make CFLAGS=-DSPDLOG_FMT_EXTERNAL
+make test

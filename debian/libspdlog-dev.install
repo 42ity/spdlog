@@ -1,0 +1,4 @@
+usr/include/spdlog
+usr/lib/*/spdlog/cmake/
+usr/lib/*/pkgconfig/spdlog.pc
+cmake/utils.cmake usr/share/doc/libspdlog-dev/
