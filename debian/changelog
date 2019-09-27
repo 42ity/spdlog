@@ -3,6 +3,7 @@ spdlog (1:1.4.1-1) UNRELEASED; urgency=medium
   * New upstream version
   * debhelper-compat 12
   * Standards-Version: 4.4.0
+  * Set upstream metadata fields: Name.
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Fri, 27 Sep 2019 18:43:37 +0200
 
