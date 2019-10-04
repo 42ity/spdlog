@@ -5,6 +5,7 @@ Section: libdevel
 Priority: optional
 Build-Depends: debhelper-compat (= 12),
                cmake,
+               meson,
                pkg-config,
                libfmt-dev,
                libsystemd-dev

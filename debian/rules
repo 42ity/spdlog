@@ -7,16 +7,19 @@ endif
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 %:
-	dh $@
+	dh $@ --buildsystem=meson
 
 override_dh_auto_configure:
-	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=ON \
-		-DSPDLOG_BUILD_EXAMPLE_HO=ON \
-		-DSPDLOG_BUILD_BENCH=OFF \
-		-DSPDLOG_BUILD_TESTS=ON \
-		-DSPDLOG_BUILD_TESTS_HO=ON \
-		-DSPDLOG_BUILD_SHARED=ON \
-		-DSPDLOG_FMT_EXTERNAL=ON
+	dh_auto_configure -- -Denable_tests=true -Dexternal_fmt=true -Dlibrary_type=shared
+
+# override_dh_auto_configure:
+# 	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=ON \
+# 		-DSPDLOG_BUILD_EXAMPLE_HO=ON \
+# 		-DSPDLOG_BUILD_BENCH=OFF \
+# 		-DSPDLOG_BUILD_TESTS=ON \
+# 		-DSPDLOG_BUILD_TESTS_HO=ON \
+# 		-DSPDLOG_BUILD_SHARED=ON \
+# 		-DSPDLOG_FMT_EXTERNAL=ON
 
 override_dh_auto_install:
 	rm -f example/logs/.gitignore
