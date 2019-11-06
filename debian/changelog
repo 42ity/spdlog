@@ -6,6 +6,7 @@ spdlog (1:1.4.2-1) UNRELEASED; urgency=medium
   * Set upstream metadata fields: Name.
   * New upstream version
   * Set upstream metadata fields: Repository.
+  * Remove obsolete fields Name from debian/upstream/metadata.
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Wed, 06 Nov 2019 18:04:05 +0100
 
