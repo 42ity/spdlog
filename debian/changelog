@@ -5,6 +5,7 @@ spdlog (1:1.4.2-1) UNRELEASED; urgency=medium
   * Standards-Version: 4.4.0
   * Set upstream metadata fields: Name.
   * New upstream version
+  * Set upstream metadata fields: Repository.
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Wed, 06 Nov 2019 18:04:05 +0100
 
