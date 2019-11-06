@@ -66,6 +66,7 @@ option(SPDLOG_FMT_EXTERNAL "Use external fmt library instead of bundled" OFF)
 
 if(WIN32)
 	option(SPDLOG_WCHAR_SUPPORT "Support wchar api" OFF)
+    option(SPDLOG_WCHAR_FILENAMES "Support wchar filenames" OFF)    
 endif()
 
 option(SPDLOG_NO_EXCEPTIONS "Compile with -fno-exceptions. Call abort() on any spdlog exceptions" OFF)
@@ -85,8 +86,6 @@ set(SPDLOG_SRCS
         src/color_sinks.cpp
         src/file_sinks.cpp
         src/async.cpp)
-
-set(SPDLOG_CFLAGS "${PROJECT_NAME}")
 
 if (SPDLOG_BUILD_SHARED)
     if(WIN32)
@@ -128,19 +127,23 @@ if(SPDLOG_FMT_EXTERNAL)
     if (NOT TARGET fmt::fmt)
         find_package(fmt REQUIRED)
     endif ()
-
-    set(SPDLOG_CFLAGS "${SPDLOG_CFLAGS} -DSPDLOG_FMT_EXTERNAL")
-
     target_compile_definitions(spdlog PUBLIC SPDLOG_FMT_EXTERNAL)
     target_link_libraries(spdlog PUBLIC fmt::fmt)
 
     target_compile_definitions(spdlog_header_only INTERFACE SPDLOG_FMT_EXTERNAL)
     target_link_libraries(spdlog_header_only INTERFACE fmt::fmt)
+
+    set(PKG_CONFIG_REQUIRES fmt) # add dependecy to pkg-config
 endif()
 
 if(SPDLOG_WCHAR_SUPPORT)
 	target_compile_definitions(spdlog PUBLIC SPDLOG_WCHAR_TO_UTF8_SUPPORT)
 	target_compile_definitions(spdlog_header_only INTERFACE SPDLOG_WCHAR_TO_UTF8_SUPPORT)
+ endif()
+
+ if(SPDLOG_WCHAR_FILENAMES)
+	target_compile_definitions(spdlog PUBLIC SPDLOG_WCHAR_FILENAMES)
+	target_compile_definitions(spdlog_header_only INTERFACE SPDLOG_WCHAR_FILENAMES)
  endif()
 
  if(SPDLOG_NO_EXCEPTIONS)
@@ -190,7 +193,7 @@ if (SPDLOG_INSTALL)
     # Include files
     #---------------------------------------------------------------------------------------
     install(DIRECTORY include/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}" PATTERN "fmt/bundled" EXCLUDE)
-    install(TARGETS spdlog spdlog_header_only EXPORT spdlog DESTINATION "${CMAKE_INSTALL_LIBDIR}/spdlog")
+    install(TARGETS spdlog spdlog_header_only EXPORT spdlog DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 
     if(NOT SPDLOG_FMT_EXTERNAL)
         install(DIRECTORY include/${PROJECT_NAME}/fmt/bundled/
@@ -198,11 +201,17 @@ if (SPDLOG_INSTALL)
     endif()
 
     #---------------------------------------------------------------------------------------
-    # Package and version files
+    # Install pkg-config file
     #---------------------------------------------------------------------------------------
+    get_target_property(PKG_CONFIG_DEFINES spdlog INTERFACE_COMPILE_DEFINITIONS)
+    string(REPLACE ";" " -D" PKG_CONFIG_DEFINES "${PKG_CONFIG_DEFINES}")
+    string(CONCAT PKG_CONFIG_DEFINES "-D" "${PKG_CONFIG_DEFINES}")
     configure_file("cmake/${PROJECT_NAME}.pc.in" "${pkg_config}" @ONLY)
     install(FILES "${pkg_config}" DESTINATION "${pkgconfig_install_dir}")
 
+    #---------------------------------------------------------------------------------------
+    # Install CMake config files
+    #---------------------------------------------------------------------------------------
     install(EXPORT spdlog
             DESTINATION ${export_dest_dir}
             NAMESPACE spdlog::
@@ -210,6 +219,7 @@ if (SPDLOG_INSTALL)
 
     include(CMakePackageConfigHelpers)
     configure_file("${project_config_in}" "${project_config_out}" @ONLY)
+
     write_basic_package_version_file("${version_config_file}" COMPATIBILITY SameMajorVersion)
     install(FILES
             "${project_config_out}"
@@ -221,3 +231,4 @@ if (SPDLOG_INSTALL)
     include(cmake/spdlogCPack.cmake)
 
 endif ()
+
