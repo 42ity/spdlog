@@ -11,10 +11,15 @@ fi
 cd $AUTOPKGTEST_TMP
 
 cp -r /usr/share/doc/libspdlog-dev/tests/ .
-mkdir cmake
+cp -r /usr/share/doc/libspdlog-dev/examples/example/ .
+mkdir cmake example_build
 cp /usr/share/doc/libspdlog-dev/utils.cmake cmake/
 cd tests
 for file in *.gz; do gunzip ${file}; done
-cmake -DSPDLOG_BUILD_TESTS=ON -DSPDLOG_BUILD_TESTS_HO=ON -DSPDLOG_FMT_EXTERNAL=ON .
-make CFLAGS=-DSPDLOG_FMT_EXTERNAL spdlog-utests-ho spdlog-utests
-make test
+cmake -DSPDLOG_BUILD_TESTS=ON -DSPDLOG_BUILD_TESTS_HO=ON .
+make -j$(nproc) spdlog-utests-ho spdlog-utests
+CTEST_PARALLEL_LEVEL=1 ctest -j1
+cd ../example_build
+cmake -DCMAKE_BUILD_TYPE=Release ../example
+make
+./example

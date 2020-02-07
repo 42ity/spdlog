@@ -7,7 +7,6 @@ Build-Depends: debhelper-compat (= 12),
                cmake,
                meson,
                pkg-config,
-               libfmt-dev,
                libsystemd-dev
 Standards-Version: 4.4.5
 Vcs-Browser: https://salsa.debian.org/med-team/spdlog
@@ -16,8 +15,7 @@ Homepage: https://github.com/gabime/spdlog
 
 Package: libspdlog-dev
 Architecture: any
-Depends: libspdlog0 (= ${binary:Version}),
-         libfmt-dev,
+Depends: libspdlog1 (= ${binary:Version}),
          ${misc:Depends}
 Description: Very fast, header only or compiled, C++ logging library
  Features: Very fast - performance is the primary goal; Headers only; No
@@ -32,7 +30,7 @@ Description: Very fast, header only or compiled, C++ logging library
  Various log targets:
  Rotating log files, Daily log files, Console logging, Linux syslog.
 
-Package: libspdlog0
+Package: libspdlog1
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},

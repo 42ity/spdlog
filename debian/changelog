@@ -1,4 +1,4 @@
-spdlog (1:1.5.0-1) UNRELEASED; urgency=medium
+spdlog (1:1.5.0-1~rc0) experimental; urgency=medium
 
   * New upstream version
   * debhelper-compat 12
