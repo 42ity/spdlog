@@ -2,7 +2,7 @@ spdlog (1:1.5.0-1~rc0) experimental; urgency=medium
 
   * New upstream version
   * debhelper-compat 12
-  * Standards-Version: 4.4.5
+  * Standards-Version: 4.5.0
   * Set upstream metadata fields: Name.
   * Set upstream metadata fields: Repository.
   * Remove obsolete fields Name from debian/upstream/metadata.
