@@ -1,3 +1,9 @@
+spdlog (1:1.5.0-1~rc1) experimental; urgency=medium
+
+  * Include symbols file
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Sat, 08 Feb 2020 15:28:01 +0100
+
 spdlog (1:1.5.0-1~rc0) experimental; urgency=medium
 
   * New upstream version
