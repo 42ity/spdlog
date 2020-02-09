@@ -15,9 +15,11 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 #	dh_auto_configure -- -Denable_tests=true -Dexternal_fmt=true -Dlibrary_type=shared
 
 override_dh_auto_configure:
+	rm -Rf include/spdlog/fmt/bundled/
 	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=ON \
 		-DSPDLOG_BUILD_EXAMPLE_HO=ON \
 		-DSPDLOG_BUILD_TESTS=ON \
+		-DSPDLOG_FMT_EXTERNAL=ON \
 		-DSPDLOG_BUILD_TESTS_HO=ON \
 		-DSPDLOG_BUILD_SHARED=ON
 

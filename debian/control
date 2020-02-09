@@ -7,6 +7,7 @@ Build-Depends: debhelper-compat (= 12),
                cmake,
                pkg-config,
                libsystemd-dev,
+               libfmt-dev,
                pkg-kde-tools
 Standards-Version: 4.5.0
 Vcs-Browser: https://salsa.debian.org/med-team/spdlog
@@ -34,6 +35,7 @@ Package: libspdlog1
 Architecture: any
 Section: libs
 Depends: ${shlibs:Depends},
+         libfmt-dev,
          ${misc:Depends}
 Description: Very fast C++ logging library
  Features: Very fast - performance is the primary goal; Headers only; No

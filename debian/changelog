@@ -1,6 +1,7 @@
 spdlog (1:1.5.0-1) unstable; urgency=medium
 
   * Release to unstable with updated symbols
+  * Use the packaged (older) libfmt package instead of bundled libfmt
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Sun, 09 Feb 2020 09:14:13 +0100
 
