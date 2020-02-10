@@ -33,6 +33,7 @@ Description: Very fast, header only or compiled, C++ logging library
 
 Package: libspdlog1
 Architecture: any
+Multi-Arch: same
 Section: libs
 Depends: ${shlibs:Depends},
          libfmt-dev,
