@@ -1,7 +1,7 @@
 spdlog (1:1.5.0+ds-1) UNRELEASED; urgency=medium
 
   * Mark libspdlog1 as Multi-Arch: same
-  * Repack source to remove old libfmt
+  * Repack source to remove newer libfmt (Closes: #952543)
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Mon, 10 Feb 2020 19:12:00 +0100
 
