@@ -1,4 +1,4 @@
-spdlog (1:1.5.0-2) UNRELEASED; urgency=medium
+spdlog (1:1.5.0+ds-1) UNRELEASED; urgency=medium
 
   * Mark libspdlog1 as Multi-Arch: same
   * Repack source to remove old libfmt
