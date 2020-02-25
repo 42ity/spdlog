@@ -1,2 +1,4 @@
-version=3
-https://github.com/gabime/spdlog/releases .*/archive/v(\d[\d.-]+)\.(?:tar(?:\.gz|\.bz2)?|tgz)
+version=4
+
+opts=repacksuffix=+ds,dversionmangle=auto \
+  https://github.com/gabime/spdlog/releases .*/archive/v(\d[\d.-]+)\.(?:tar(?:\.gz|\.bz2)?|tgz)

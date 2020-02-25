@@ -1,6 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: spdlog
 Source: https://github.com/gabime/spdlog
+Files-Excluded: include/spdlog/fmt/bundled
 
 Files: *
 Copyright: (c) 2014-2016 Gabi Melman <gmelman1@gmail.com>
