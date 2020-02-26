@@ -1,8 +1,9 @@
-spdlog (1:1.5.0+ds-2) UNRELEASED; urgency=medium
+spdlog (1:1.5.0+ds-2) unstable; urgency=medium
 
   * Add Build-Depends-Package meta-information field
+  * Refresh symbols
 
- -- Michael R. Crusoe <michael.crusoe@gmail.com>  Tue, 25 Feb 2020 19:36:38 +0100
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Wed, 26 Feb 2020 11:14:14 +0100
 
 spdlog (1:1.5.0+ds-1) unstable; urgency=medium
 
