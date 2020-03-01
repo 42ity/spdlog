@@ -1,6 +1,7 @@
 spdlog (1:1.5.0+ds-3) UNRELEASED; urgency=medium
 
   * Depend on newer libfmt (Closes: #952625)
+  * libspdlog-dev is Multi-Arch: same
 
  -- Michael R. Crusoe <michael.crusoe@gmail.com>  Sun, 01 Mar 2020 11:45:33 +0100
 
