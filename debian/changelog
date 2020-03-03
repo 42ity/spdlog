@@ -1,4 +1,4 @@
-spdlog (1:1.5.0+ds-3~rc2) UNRELEASED; urgency=medium
+spdlog (1:1.5.0+ds-3) unstable; urgency=medium
 
   * Speed up nocheck build profile by not building the tests & example
 
