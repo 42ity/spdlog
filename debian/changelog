@@ -1,3 +1,9 @@
+spdlog (1:1.5.0+ds-3~rc2) UNRELEASED; urgency=medium
+
+  * Speed up nocheck build profile by not building the tests & example
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Tue, 03 Mar 2020 11:44:57 +0100
+
 spdlog (1:1.5.0+ds-3~rc1) experimental; urgency=medium
 
   * Hopefully the final symbols refresh for 1.5.0

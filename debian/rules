@@ -16,12 +16,21 @@ export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 override_dh_auto_configure:
 	rm -Rf include/spdlog/fmt/bundled/
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
 	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=ON \
 		-DSPDLOG_BUILD_EXAMPLE_HO=ON \
 		-DSPDLOG_BUILD_TESTS=ON \
 		-DSPDLOG_FMT_EXTERNAL=ON \
 		-DSPDLOG_BUILD_TESTS_HO=ON \
 		-DSPDLOG_BUILD_SHARED=ON
+else
+	dh_auto_configure -- -DSPDLOG_BUILD_EXAMPLE=OFF \
+		-DSPDLOG_BUILD_EXAMPLE_HO=OFF \
+		-DSPDLOG_BUILD_TESTS=OFF \
+		-DSPDLOG_FMT_EXTERNAL=ON \
+		-DSPDLOG_BUILD_TESTS_HO=OFF \
+		-DSPDLOG_BUILD_SHARED=ON
+endif
 
 override_dh_auto_test:
 ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
