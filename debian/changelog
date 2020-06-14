@@ -1,15 +1,18 @@
-spdlog (1:1.5.0+ds-4) UNRELEASED; urgency=medium
+spdlog (1:1.5.0+ds-4) unstable; urgency=medium
+
+  * Team upload.
 
   [ Michael R. Crusoe ]
   * Update Michael's email address
 
   [ Nilesh Patra ]
   * Use system libfmt by default
+    Closes: #956694
 
   [ Andreas Tille ]
   * Add salsa-ci.yml
 
- -- Andreas Tille <tille@debian.org>  Sun, 14 Jun 2020 20:46:53 +0200
+ -- Nilesh Patra <npatra974@gmail.com>  Sun, 14 Jun 2020 20:46:53 +0200
 
 spdlog (1:1.5.0+ds-3) unstable; urgency=medium
 
