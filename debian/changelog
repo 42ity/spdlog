@@ -9,6 +9,8 @@ spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
     Closes: #962089
   * Adjust libspdlog1 symbols for buster-bpo/amd64. Closes: #963481
   * Rules-Requires-Root: no (routine-update)
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
 
  -- Michael R. Crusoe <crusoe@debian.org>  Mon, 22 Jun 2020 16:43:32 +0200
 
