@@ -1,5 +1,10 @@
 spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
 
+  [ Matthias Klose ]
+  * Mark one more symbol as optional for ppc64 when building with -O3.
+    Closes: #961134
+
+  [ Michael R. Crusoe ]
   * Move libfmt-dev dependency from libspdlog1 to libspdlog-dev.
     Closes: #962089
   * Adjust libspdlog1 symbols for buster-bpo/amd64. Closes: #963481
