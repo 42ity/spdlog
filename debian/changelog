@@ -1,4 +1,4 @@
-spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
+spdlog (1:1.5.0+ds-5) unstable; urgency=medium
 
   [ Matthias Klose ]
   * Mark one more symbol as optional for ppc64 when building with -O3.
@@ -12,7 +12,7 @@ spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
   * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
     Repository-Browse.
 
- -- Michael R. Crusoe <crusoe@debian.org>  Mon, 22 Jun 2020 16:43:32 +0200
+ -- Michael R. Crusoe <crusoe@debian.org>  Mon, 22 Jun 2020 17:20:18 +0200
 
 spdlog (1:1.5.0+ds-4) unstable; urgency=medium
 
