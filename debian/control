@@ -18,6 +18,7 @@ Package: libspdlog-dev
 Architecture: any
 Multi-Arch: same
 Depends: libspdlog1 (= ${binary:Version}),
+         libfmt-dev (>= 6.1.2+ds),
          ${misc:Depends}
 Description: Very fast, header only or compiled, C++ logging library
  Features: Very fast - performance is the primary goal; Headers only; No
@@ -37,7 +38,6 @@ Architecture: any
 Multi-Arch: same
 Section: libs
 Depends: ${shlibs:Depends},
-         libfmt-dev (>= 6.1.2+ds),
          ${misc:Depends}
 Description: Very fast C++ logging library
  Features: Very fast - performance is the primary goal; Headers only; No

@@ -1,3 +1,10 @@
+spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
+
+  * Move libfmt-dev dependency from libspdlog1 to libspdlog-dev.
+    Closes: #962089
+
+ -- Michael R. Crusoe <crusoe@debian.org>  Mon, 22 Jun 2020 16:43:32 +0200
+
 spdlog (1:1.5.0+ds-4) unstable; urgency=medium
 
   * Team upload.
