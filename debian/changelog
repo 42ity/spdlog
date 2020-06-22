@@ -2,6 +2,7 @@ spdlog (1:1.5.0+ds-5) UNRELEASED; urgency=medium
 
   * Move libfmt-dev dependency from libspdlog1 to libspdlog-dev.
     Closes: #962089
+  * Adjust libspdlog1 symbols for buster-bpo/amd64. Closes: #963481
 
  -- Michael R. Crusoe <crusoe@debian.org>  Mon, 22 Jun 2020 16:43:32 +0200
 
