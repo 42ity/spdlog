@@ -2,6 +2,7 @@ spdlog (1:1.7.0+ds-1) UNRELEASED; urgency=medium
 
   * New upstream version
   * debhelper-compat 13 (routine-update)
+  * Freshen patches
 
  -- Michael R. Crusoe <crusoe@debian.org>  Thu, 16 Jul 2020 12:05:19 +0200
 
